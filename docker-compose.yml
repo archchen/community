@@ -10,8 +10,8 @@ services:
       - "39517:27017"    
     volumes:
       - "./dbIniter/:/docker-entrypoint-initdb.d/"
-      - "/data/nodebb:/data/db"
-      - "/backup/nodebb:/backup"
+      - "/mnt/data/nodebb:/data/db"
+      - "/mnt/backup/nodebb:/backup"
       - "./configs.json:/etc/nodebb/configs.json"
     restart: always
     environment:
