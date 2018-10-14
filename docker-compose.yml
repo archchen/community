@@ -12,6 +12,7 @@ services:
       - "./dbIniter/:/docker-entrypoint-initdb.d/"
       - "/data/nodebb:/data/db"
       - "/backup/nodebb:/backup"
+      - "./configs.json:/etc/nodebb/configs.json"
     restart: always
     environment:
      - TZ=Asia/Shanghai
@@ -24,8 +25,6 @@ services:
       replicas: 3
       restart_policy:
         condition: on-failure
-    volumes:
-      - "./configs.json:/etc/nodebb/configs.json"
     ports:
       - "8081:4567"
     networks:
