@@ -1,4 +1,4 @@
-# nodebb with docker-comose
+# NodeBB with docker-comose
 
 ## System Requirements
 
