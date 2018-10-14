@@ -1,0 +1,36 @@
+version: "3"
+services:
+  nodebb_db:
+    image: mongo:3.6
+    command: ['mongod', '--auth', '--bind_ip_all']
+    networks:
+      - default
+      - nodebb_net
+    ports:
+      - "39517:27017"    
+    volumes:
+      - "./dbIniter/:/docker-entrypoint-initdb.d/"
+      - "/data/nodebb:/data/db"
+      - "/backup/nodebb:/backup"
+    restart: always
+    environment:
+     - TZ=Asia/Shanghai
+  nodebb:
+    image: nodebb/docker
+    links: 
+      - nodebb_db
+    restart: always
+    deploy:
+      replicas: 3
+      restart_policy:
+        condition: on-failure
+    ports:
+      - "8081:4567"
+    networks:
+      - default
+      - nodebb_net
+    environment:
+     - TZ=Asia/Shanghai
+networks:
+ nodebb_net:
+  external: true

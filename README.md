@@ -1,9 +1,9 @@
 # nodebb with docker-comose
 
-## Pre-installation
+## System Requirements
 
 1. docker
-2. docker-compose
+2. docker-compose (v3+)
 
 ## Deploy
 
