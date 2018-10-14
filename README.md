@@ -7,6 +7,8 @@
 
 ## Deploy
 
+You must first modify the database password in the ```configs.json```, otherwise there will be potential security issues.
+
 ``` shell
 $ git clone https://github.com/LearnSolid/nodebb
 $ cd nodebb
