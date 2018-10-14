@@ -24,6 +24,8 @@ services:
       replicas: 3
       restart_policy:
         condition: on-failure
+    volumes:
+      - "./configs.json:/etc/nodebb/configs.json"
     ports:
       - "8081:4567"
     networks:
