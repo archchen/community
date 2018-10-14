@@ -9,5 +9,7 @@
 
 ``` shell
 $ git clone https://github.com/LearnSolid/nodebb
-$ cd nodebb && docker-compose up -d
+$ cd nodebb
+$ sudo docker network create nodebb_net
+$ sudo docker-compose up -d
 ```
