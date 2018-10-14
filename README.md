@@ -15,3 +15,5 @@ $ cd nodebb
 $ sudo docker network create nodebb_net
 $ sudo docker-compose up -d
 ```
+
+Then you can visit ```http://YOUR_HOST:8081``` to install nodebb.
