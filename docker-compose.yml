@@ -4,10 +4,7 @@ services:
     image: mongo:3.6
     command: ['mongod', '--auth', '--bind_ip_all']
     networks:
-      - default
-      - nodebb_net
-    ports:
-      - "39517:27017"    
+      - nodebb_net   
     volumes:
       - "./dbIniter/:/docker-entrypoint-initdb.d/"
       - "/mnt/data/nodebb:/data/db"
@@ -25,13 +22,19 @@ services:
       replicas: 3
       restart_policy:
         condition: on-failure
-    ports:
-      - "8081:4567"
     networks:
-      - default
       - nodebb_net
+      - webgateway
     environment:
-     - TZ=Asia/Shanghai
+      - TZ=Asia/Shanghai
+    labels:
+      - "traefik.frontend.rule=Host:x.nlinv.com"
+      - "traefik.port=4567"
+      - "traefik.docker.network=webgateway"
+      - "traefik.enable=true"
+
 networks:
  nodebb_net:
   external: true
+ webgateway:
+   external: true
